@@ -1,0 +1,162 @@
+<!-- This is a first example of using a template -->
+
+<head>
+
+
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/handlebars-v3.0.3.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="AnimalsData.js"></script>
+<script src="assignment.js"></script>
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="assignment.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+	<div class="page-header">
+		<h1 class="title">Lauren's Favorite Animals</h1>
+	</div>
+	
+	<!-- Navigation-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span> 
+        </button>
+         <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li role="" class="active" id="home-page"><a href="#"  >Home</a>
+                    </li>
+                    <li class="dropdown" role="" id="category-btn">
+                         <a  class="dropdown-toggle" data-toggle="dropdown"href="#">Category
+			             <span class="caret"></span></a>
+			             <ul class="dropdown-menu">
+                     <div id="dd-content"></div>
+                </ul>
+			       </li>
+                    <li role="" id="all-animals" >
+                    <a href="#" >All Animals</a></li>
+                </ul>
+        </div>
+    </div> 
+</nav>
+    
+      <br/><br/>
+	
+<!-- div to put the templates-->
+    
+<div id="content"  class="container-fluid"  role="main">
+</div>
+
+    
+    
+<!-- Dropdown template-->
+    
+<script id="dropdown-template"  type="text/x-handlebars-template">
+    {{#each category}}
+        <li class="cat-btn" role="" data-id="{{@index}}"><a href="#">{{name}}</a></li>
+    {{/each}}
+        
+</script>
+    
+    
+    
+
+<!---homepage template-->
+
+<script id="animal-template" type="text/x-handlebars-template">
+    <ol class="breadcrumb">
+        <li id="home-crumb" class="breadcrumb-item active">Home</li>
+    </ol>
+	   <div class="row">
+            {{#each category}}
+            <div class="col-xs-12 col-s-10 col-md-4 col-lg-4">
+      <!--click function not working here--> 
+                <div class="animal-type" data-id="{{@index}}">
+                    <h3>{{name}}</h3>
+                    {{#with animals.[0]}}
+                        <img class="crop-img" src="{{image1}}" width="100%" style=" max-height:200px; max-width:300px;"/>	
+                     {{/with}}
+        </div> <!--/ click class-->
+            </div><!--/col-->
+            {{/each}}
+        </div> <!-- /row-->
+</script> 
+
+
+<!--category template-->
+    
+<script id="category-template" type="text/x-handlebars-template">
+
+
+<ol class="breadcrumb">
+  <li id="home-breadcrumb" class="breadcrumb-item"><a href="#">Home</a></li>
+  <li class="breadcrumb-item active">{{name}}</li>
+</ol>
+
+
+  <div class="row">
+    {{#each animals}}
+       <div class="single-animal" data-id="{{@index}}">
+        <div class="col-xs-12 col-sm-4 col-md-3"> 
+            <div class="type" data-id="{{@index}}">
+                 <h3>{{name}}</h3>
+                <img class="category-img" src="{{image1}}" alt=""/> 
+               
+            </div> <!-- / click class -->
+        </div><!--/col-->
+    </div>
+    {{/each}}
+   </div>  <!-- / row -->
+</script>
+
+<!--all animals template-->
+
+<script id="all-template" type="text/x-handlebars-template">
+<ol class="breadcrumb">
+  <li id="home-breadcrumb" class="breadcrumb-item"><a href="#">Home</a></li>
+  <li class="breadcrumb-item active">All Animals</li>
+</ol>
+	<div class="row">
+	   <div class="container-fluid">
+	       {{#each category}}
+		      {{#each animals}}
+		          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+		              <div class="single-animal" data-id="{{@index}}">
+			             <h3>{{name}}</h3>
+			             <img class="all-img" src="{{image2}}"/>
+                      </div> <!--/click class-->
+                  </div> <!--/col-->
+		       {{/each}}
+	       {{/each}}
+	   </div><!--/container-->
+	</div><!--/row-->
+</script>
+
+<!--single animal template-->
+    
+<script id="single-template" type="text/x-handlebars-template">
+<ol class="breadcrumb">
+    <li id="home-breadcrumb" class="breadcrumb-item"><a href="#">Home</a></li>
+    <li id="single-crumb"  class="breadcrumb-item active">{{name}}</li>
+</ol>
+<div class="row">
+    <div class="container-fluid">
+        <div class="col-xs-12">
+            <h3>{{name}}</h3>
+            <p>{{description}}</p>
+            <img class="animal-image" src="{{image1}}"/>
+            <img class="animal-image" src="{{image2}}"/>
+        </div>
+    </div>
+</div>
+</script>    
+
+</body>

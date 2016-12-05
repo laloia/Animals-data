@@ -1,0 +1,49 @@
+
+.category-img{
+
+max-height:200px;
+max-width: 200px;
+float:left;
+
+}
+
+.all-img{
+
+max-height:200px;
+max-width:200px;
+
+}
+
+.all-cat{
+float:left;
+
+}
+
+img.animal-image{
+    max-height:300px;
+    max-width: 300px;
+    padding:15px;
+    
+    
+}
+
+ol.breadcrumb{
+    margin-top:-50px;
+    
+}
+
+li.cat-btn{
+    padding:5px;
+    text-decoration:none;
+}
+
+li.cat-btn a{
+    
+    color:black;
+}
+
+li.cat-btn a:hover{
+    
+    background-color: lightgray;
+}
+
