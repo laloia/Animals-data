@@ -96,8 +96,7 @@ var animals_data = {
 				},
 			]
            
-		},
-        { name : "Fish",}
+		}
 	]
 };
 
